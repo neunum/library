@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = local.SECRET_KEY
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#ij6vy@rqx)2aa^+n*7p$i*onfts5os_mpmw!%q6o(r&b#d*17')
+SECRET_KEY = '#ij6vy@rqx)2aa^+n*7p$i*onfts5os_mpmw!%q6o(r&b#d*17'
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -78,8 +78,19 @@ WSGI_APPLICATION = 'library.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = local.DATABASES
-
+DATABASES = {
+    'default': {
+        'HOST': '127.0.0.1',
+        'NAME': 'library',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
+        # 'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
+        'PASSWORD': 'coderslab',
+        # 'OPTIONS': {
+        #             'autocommit': True,
+        # },
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
